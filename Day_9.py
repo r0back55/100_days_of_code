@@ -222,3 +222,41 @@ while not bidding_finished:
     find_highest_bidder(bids)
   elif should_continue == "yes":
     os.system('cls') 
+
+
+
+# <----------------------------------------------------------
+# Secret Auction Program -> VERSION 4 (refactored by ChatGPT)
+def get_bid():
+    """Get a bid from a user."""
+    name = input("What is your name?: ")
+    price = int(input("What is your bid?: $"))
+    return name, price
+
+def ask_to_continue():
+    """Ask if there are more bidders."""
+    return input("Are there any other bidders? Type 'yes' or 'no'.\n").lower()
+
+def find_highest_bidder(bidding_record):
+    """Find and print the highest bidder from the bidding record."""
+    highest_bid = 0
+    winner = ""
+    for bidder, bid_amount in bidding_record.items():
+        if bid_amount > highest_bid:
+            highest_bid = bid_amount
+            winner = bidder
+    print(f"The winner is {winner} with a bid of ${highest_bid}")
+
+def secret_auction():
+    """Conduct a secret auction."""
+    bids = {}
+    while True:
+        name, price = get_bid()
+        bids[name] = price
+        if ask_to_continue() == "no":
+            break
+    find_highest_bidder(bids)
+
+# Start the auction
+if __name__ == "__main__":
+    secret_auction()
