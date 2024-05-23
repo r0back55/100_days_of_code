@@ -61,11 +61,19 @@ def collect_money():
     return coins_inserted
 
 
+def is_enough_money(coffee, inserted):
+    if inserted > MENU[coffee]['cost']:
+        change = collect_money() - MENU[coffee]['cost']     # TODO 3: this cause calling function twice - incorrect
+        print(f"Here is ${change} in change")
+    else:
+        print("Sorry that's not enough money. Money refunded.")
+
+
 def enough_resources(coffee):
     if resources['water'] < MENU[coffee]['ingredients']['water']:
         print("Sorry there is not enough water.")
 
-    if resources['milk'] < MENU[coffee]['ingredients']['milk']:
+    if resources['milk'] < MENU[coffee]['ingredients']['milk']:  # TODO 1: fix error with milk in espresso (another if?)
         print("Sorry there is not enough milk.")
 
     if resources['coffee'] < MENU[coffee]['ingredients']['coffee']:
@@ -74,13 +82,13 @@ def enough_resources(coffee):
     if (resources['water'] > MENU[coffee]['ingredients']['water']
             and resources['milk'] > MENU[coffee]['ingredients']['milk']
             and resources['coffee'] > MENU[coffee]['ingredients']['coffee']):
-        pass
-        # ... calcualte here if there is enough money
+        inserted = collect_money()      # TODO 3: this cause calling function twice - incorrect
+        is_enough_money(coffee, inserted)
 
 
 if user_choice == 'report':
     report(resources, bank)
 elif user_choice == 'off':
-    continue_running = False    # something with True/False to terminate the code
-elif user_choice == 'latte':
+    continue_running = False    # TODO 2: include this in "while" loop to terminate the code
+else:
     enough_resources(user_choice)
