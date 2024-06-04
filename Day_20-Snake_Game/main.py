@@ -1,34 +1,34 @@
-from turtle import Screen, Turtle
+from turtle import Screen
+from snake import Snake
+import time
 
 
+# -------------------------------------------------
+# general settings
 screen = Screen()
-screen.setup(width=640, height=640)
+screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("Snake Game")
+screen.tracer(0)
 
 
 # -------------------------------------------------
 # Create a snake body
 
-frank = Turtle()
-frank.shape("square")
-frank.shapesize(stretch_wid=1, stretch_len=1)
-frank.color("white")
-frank.goto(x=(0.00, 0.00))
+snake = Snake()
 
-frank1 = Turtle()
-frank1.shape("square")
-frank1.shapesize(stretch_wid=1, stretch_len=1)
-frank1.color("white")
-frank1.goto(x=(-20.00, 0.00))
+screen.listen()
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.down,"Down")
+screen.onkey(snake.left,"Left")
+screen.onkey(snake.right,"Right")
 
-frank2 = Turtle()
-frank2.shape("square")
-frank2.shapesize(stretch_wid=1, stretch_len=1)
-frank2.color("white")
-frank2.goto(x=(-40.00, 0.00))
+is_game_on = True
+while is_game_on:
+    screen.update()
+    time.sleep(0.1)
 
-
+    snake.move()
 
 
 screen.exitonclick()
