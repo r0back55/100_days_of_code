@@ -9,7 +9,6 @@ to_address = ""
 
 date = dt.datetime.now()
 day_of_week = date.weekday()
-print(day_of_week)
 
 if day_of_week == 5:
 
