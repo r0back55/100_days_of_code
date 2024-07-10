@@ -23,8 +23,8 @@ print(song_names)
 
 
 # Spotify authentication
-SPOTIFY_CLIENT_ID = "1419683c96c44b58abf575082296ce4b"
-SPOTIFY_CLIENT_SECRET = "858198fc115c4355b8890ccc8f1f3429"
+SPOTIFY_CLIENT_ID = ""
+SPOTIFY_CLIENT_SECRET = ""
 REDIRECT_URI = "https://open.spotify.com/"
 scope = "playlist-modify-private"
 
